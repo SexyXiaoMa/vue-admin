@@ -27,7 +27,7 @@ let routes = [
   {
     // 权限不足路由
     path: "/permission_denied",
-    name: "denied",
+    name: "permission_denied",
     component: Denied
   },
   {

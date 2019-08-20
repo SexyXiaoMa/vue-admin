@@ -1,3 +1,1 @@
-export const SELECT_MENU = "SELECT_MENU";
-export const INIT_MENU = "INIT_MENU";
-export const SELECT_MENU_OF_ROUTER = "SELECT_MENU_OF_ROUTER";
+export const setMenu = "setMenu";

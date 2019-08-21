@@ -91,8 +91,6 @@ let setButton = node => {
  * @method
  * @description 深度优先遍历
  * @param {Object/Array} obj
- * @param {String} childName
- * @param {Function} callback
  */
 const deepMapRouter = data => {
   let node = {};

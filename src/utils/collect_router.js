@@ -1,6 +1,7 @@
 import System from "@/views/myapp/myapp.js";
-import Store from "@/store/store.js";
+import Store from "@/store/index.js";
 import Layout from "@/views/layout.vue";
+import { deepCopy } from '@/utils/deep_copy'
 
 /**
  * @author sexyXiaoMa
@@ -119,7 +120,7 @@ const deepMapRouter = data => {
     }
     if (childrens && childrens.length > 0) {
       childrens.map(children => {
-        children.$f = child; // 存入父节点供子节点使用
+        // children.$f = child; // 存入父节点供子节点使用 (deepmap 会导致栈溢出) 慎用
         children.fid = child.file_path || child.ename; // 记录 children base file_path
         children.kid = child.key || child.ename; // 设置 children base key
         if (child.level) children.level = child.level; // 继承父元素的 level
@@ -133,7 +134,7 @@ const deepMapRouter = data => {
 (function init() {
   deepMapRouter(routers); // 全量 Menu List, 用于 Menu 渲染
   // 全量权限数据
-  Store.dispatch("setMenu", routers.concat());
+  Store.dispatch("Menu/set_complete_menu", deepCopy(routers));
 })();
 
 export default {
